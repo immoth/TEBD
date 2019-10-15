@@ -15,18 +15,31 @@ sz=np.array([[1,0],[0,-1]])
 I2=np.dot(sz,sz)
 Z2=sz-sz
 
+"""
 "Parameters"
 tua=1;
 Delta=0.7;
 U=0.0;
 mu=0.2;
 
+params=np.array([tua,Delta,U,mu])
+np.savetxt("params",params)
+"""
+
+
+"Get parameters from the initilization file"
+params=np.loadtxt("params")
+tua=params[0]
+Delta=params[1]
+U=params[2]
+mu=params[3]
+
 "Matrix Operators"
 VPOl=np.array([I2,(tua+Delta)/2*sx,(tua-Delta)/2*sy,U*sz,-mu*sz])
 MPO=np.array([[I2,(tua+Delta)/2*sx,(tua-Delta)/2*sy,U*sz,-mu*sz],[Z2,Z2,Z2,Z2,sx],[Z2,Z2,Z2,Z2,sy],[Z2,Z2,Z2,Z2,sz],[Z2,Z2,Z2,Z2,I2]])
 VPOr=np.array([-mu*sz,sx,sy,sz,I2])
 
-"constructs the MPO for a given length"
+"constructs the Hamiltonian MPO for a given length"
 def HMPO(L):
     htp=[VPOl]
     for i in range(1,L-1):

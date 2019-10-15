@@ -7,7 +7,7 @@ Created on Fri Sep 27 10:58:28 2019
 import matplotlib.pyplot as plt
 import numpy as np
 
-
+"""
 np.savetxt("zzz_phA_L26_d10_Nm8",phA)
 np.savetxt("zzz_phB_L26_d10_Nm8",phB)
 np.savetxt("zzz_lapA_L26_d10_Nm8",lapA)
@@ -15,7 +15,7 @@ np.savetxt("zzz_lapB_L26_d10_Nm8",lapB)
 np.savetxt("zzz_parA_L26_d10_Nm8",parP)
 np.savetxt("zzz_parB_L26_d10_Nm8",parM)
 np.savetxt("zzz_wlist_d26_Nm8",wlist)
-
+"""
 
 phAL=np.loadtxt("zzz_phA_L26_d10_Nm8")
 phBL=np.loadtxt("zzz_phB_L26_d10_Nm8")

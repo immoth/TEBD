@@ -63,7 +63,7 @@ def gxMPO(wl,L):
     Vl=np.array(Vl)
     gtp=[Vl]
     for l in range(1,L-1):
-        mtp=np.array([[z]*d]*d)
+        mtp=np.array([[z]*d]*d,dtype=np.complex_)
         for dd in range(0,d):
             if dd<l:
                 mtp[dd,dd]=s0
@@ -72,7 +72,7 @@ def gxMPO(wl,L):
             else:
                 mtp[dd,dd]=sz
         gtp.append(np.array(mtp))
-    Vr=np.array([s0]*d)
+    Vr=np.array([s0]*d,dtype=np.complex_)
     if L-1<=d-1:
         Vr[L-1]=sx
     gtp.append(Vr)
@@ -86,7 +86,7 @@ def gyMPO(wl,L):
     Vl=np.array(Vl)
     gtp=[Vl]
     for l in range(1,L-1):
-        mtp=np.array([[z]*d]*d)
+        mtp=np.array([[z]*d]*d,dtype=np.complex_)
         for dd in range(0,d):
             if dd<l:
                 mtp[dd,dd]=sz
@@ -95,7 +95,7 @@ def gyMPO(wl,L):
             else:
                 mtp[dd,dd]=s0
         gtp.append(np.array(mtp))
-    Vr=np.array([sz]*d)
+    Vr=np.array([sz]*d,dtype=np.complex_)
     if L-1<=d-1:
         Vr[L-1]=1j*sy
     gtp.append(Vr)

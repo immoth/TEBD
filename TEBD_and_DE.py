@@ -9,7 +9,6 @@ import copy
 import numpy as np
 import MPS
 import scipy.linalg as lng
-import H_time
 import U_MPO
 import MPO
 import Matrix_Element as ME
@@ -127,9 +126,8 @@ for nt in range(0,Nt):
 
 psipr=psip
 ypr=ypt
-""" 
+
 "Zap"
-oz=Zap.zap(int(L/2)-1,int(L/2),L)
 mzt=MPO.MPOtoO(oz)
 Id=np.identity(len(psip))
 mz=(dotl([cl[int(L/2)-1]-dl[int(L/2)-1],cl[int(L/2)]+dl[int(L/2)]]))
@@ -144,7 +142,7 @@ psip=np.dot(mz,psip)
 
 ymt=ME.apply_O(oz,ymt)
 psim=np.dot(mz,psim)
-"""
+
 
 "wait"
 for nt in range(0,Nw):

@@ -14,10 +14,25 @@ sz=np.array([[1,0],[0,-1]])
 I2=np.dot(sz,sz)
 Z2=sz-sz
 
+"""
 "Parameters"
 tua=1;
+#U=0
 Delta=0.7;
 mu=0.1;
+
+params=np.array([tua,Delta,U,mu])
+np.savetxt("params",params)
+"""
+
+"Get parameters from the initilization file"
+"U is not used"
+"mu is divided by 2 since TEBD hits it twice"
+params=np.loadtxt("params")
+tua=params[0]
+Delta=params[1]
+U=params[2]
+mu=params[3]/2
 
 "Matrix Operators"
 def VPOl(V):

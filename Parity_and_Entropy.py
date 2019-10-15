@@ -4,6 +4,8 @@ Created on Mon Sep 23 09:39:31 2019
 
 @author: jsten
 """
+import numpy as np
+import copy
 import numpy.linalg as lng
 import MPS
 
@@ -100,6 +102,7 @@ def entL(mps):
 
 def apply_x(l,mps):
     mtp=copy.deepcopy(mps)
+    L=len(mps)
     if l==0:
         mtp[l]=np.einsum("ab,bi->ai",sx,mtp[l])
     elif l==L-1:
@@ -110,6 +113,7 @@ def apply_x(l,mps):
 
 def apply_z(l,mps):
     mtp=copy.deepcopy(mps)
+    L=len(mps)
     if l==0:
         mtp[l]=np.einsum("ab,bi->ai",sz,mtp[l])
     elif l==L-1:
@@ -155,6 +159,7 @@ def entropy(Mps,l):
 
 def entropyL(mps):
     mtp=copy.deepcopy(mps)
+    L=len(mps)
     etp=[]
     for l in range(0,L):
         etp.append(entropy(mtp,l))

@@ -11,10 +11,27 @@ import Parity_Operator as PO
 import Matrix_Element as ME
 import Hamiltonian_DE as HDE
 import Canonical_Form as CanF
+import numpy as np
+import Zap
 
-L=26
+"Parameters"
+tua=1;
+Delta=0.7;
+U=0.0;
+mu=0.2;
+
+params=np.array([tua,Delta,U,mu])
+np.savetxt("params",params)
+
+"Sizes"
+L=5
 DD=3
 dd=2
+
+"Zap opperator"
+n1=int(L/2)-1
+n2=int(L/2)
+oz=Zap.zapN(n1,n2,L)
 
 y=DMRG.DMRG(L,DD,dd,0)
 

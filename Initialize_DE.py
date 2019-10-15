@@ -23,12 +23,23 @@ np.set_printoptions(threshold=sys.maxsize)
 def C(M):
     return np.conj(M)
 
+"""
 "Parameters"
 Nx=5;
 Delta=0.7;
 t=1.0;
 mu=0.2;
 V=0.0;
+"""
+
+
+"Get parameters from the initilization file"
+Nx=L
+params=np.loadtxt("params")
+t=params[0]
+Delta=params[1]
+V=params[2]
+mu=params[3]
 
 
 "Spin Matrices"
@@ -49,8 +60,8 @@ def krn(lis):
     return ktp
 
 "creats lists to be inserted into krn"
-cL=np.zeros([Nx,Nx,2,2])
-dL=np.zeros([Nx,Nx,2,2])
+cL=np.zeros([Nx,Nx,2,2],dtype=np.complex_)
+dL=np.zeros([Nx,Nx,2,2],dtype=np.complex_)
 for l in range(0,Nx):
     cL[l,l]=sp
     dL[l,l]=sm
