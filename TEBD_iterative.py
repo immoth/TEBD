@@ -40,7 +40,7 @@ print(ME.ME(ymn,gmpo.gxMPO(gxlist,L),MPO.apply_O(gmpo.gyMPO(gylist,L),ymn)))
 
 Nt=100
 dt=0.01
-Vmax=0.1
+Vmax=0.10000001
 #wait=3000
 #Nw=wait
 L=len(ypt)
@@ -73,16 +73,18 @@ for nt in range(0,Nt):
     
     
 print("ramped up")     
-  
+
+"""  
 "Zap"
 ypt=ME.apply_O(oz,ypt)
 ymt=ME.apply_O(oz,ymt)
-
+"""
 yphold=copy.deepcopy(ypt)
 ymhold=copy.deepcopy(ymt)
+
 Nw0=0
     
-for wait in range(0,3000,10):  
+for wait in range(0,3000,30):  
     Nw=wait
     ypt=copy.deepcopy(yphold)
     ymt=copy.deepcopy(ymhold)
@@ -123,8 +125,8 @@ for wait in range(0,3000,10):
     print(phBw)
     print(lapAw)
     print(lapBw)
-    print(parPw)
-    print(parMw)
+    print(1-abs(parPw))
+    print(1-abs(parMw))
     
     phA.append(phAw)
     phB.append(phBw)

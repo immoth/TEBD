@@ -14,6 +14,7 @@ import Zap
 import Canonical_Form as CanF
 import GammaL_MPO as gmpo
 import Parity_and_Entropy as PaE
+import MPS
 
 import time
 
@@ -45,7 +46,7 @@ print(ME.ME(ymn,gmpo.gxMPO(gxlist,L),MPO.apply_O(gmpo.gyMPO(gylist,L),ymn)))
 Nt=100
 dt=0.01
 Vmax=0.1
-wait=100
+wait=300
 Nw=wait
 ramp=1.0
 L=len(ypt)
@@ -67,17 +68,20 @@ for nt in range(0,Nt):
     ymt=U_MPO.Apply_Uleft(ymt,eF(nt*dt),dt,1)
     ymt=U_MPO.Apply_Uright(ymt,eF(nt*dt),dt,1)
     
+    """
     eplist.append(PaE.entL(ypt))
     emlist.append(PaE.entL(ymt))
     pplist.append(PaE.parL(ypt))
     pmlist.append(PaE.parL(ymt))
- 
+    """
+    
 print("ramped up")     
 
 
 ypr=copy.deepcopy(ypt)
 ymr=copy.deepcopy(ymt)
 
+"""
 "Zap"
 ypt=ME.apply_O(oz,ypt)
 ymt=ME.apply_O(oz,ymt)
@@ -91,7 +95,7 @@ ymt=CanF.LConAll(ymt)
 ypz=copy.deepcopy(ypt)
 ymz=copy.deepcopy(ymt)
 print("zapped")
-
+"""
 
 
 "wait"
@@ -102,10 +106,12 @@ for nt in range(0,Nw):
     ymt=U_MPO.Apply_Uleft(ymt,eF((Nt-1)*dt),dt,1)
     ymt=U_MPO.Apply_Uright(ymt,eF((Nt-1)*dt),dt,1)
     
+    """
     eplist.append(PaE.entL(ypt))
     emlist.append(PaE.entL(ymt))
     pplist.append(PaE.parL(ypt))
     pmlist.append(PaE.parL(ymt))
+    """
 
 print("waited")
     
@@ -117,10 +123,12 @@ for nt in range(1,Nt+1):
     ymt=U_MPO.Apply_Uleft(ymt,eF((Nt-nt)*dt),dt,-1)
     ymt=U_MPO.Apply_Uright(ymt,eF((Nt-nt)*dt),dt,-1)
     
+    """
     eplist.append(PaE.entL(ypt))
     emlist.append(PaE.entL(ymt))
     pplist.append(PaE.parL(ypt))
     pmlist.append(PaE.parL(ymt))
+    """
 
 print("ramped down")
 
@@ -141,7 +149,7 @@ print(parBd)
 
 b=time.time()
 
-print(b-a)
+print((b-a)/60)
 
 
 
