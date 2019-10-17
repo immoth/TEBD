@@ -23,7 +23,7 @@ lapAm10=np.loadtxt("zzz_lapA_L26_d10_Nm10")
 lapBm10=np.loadtxt("zzz_lapB_L26_d10_Nm10")
 parPm10=np.loadtxt("zzz_parA_L26_d10_Nm10")
 parMm10=np.loadtxt("zzz_parB_L26_d10_Nm10")
-wlistm10=np.loadtxt("zzz_wlist_d26_Nm10")
+wlistL=np.loadtxt("zzz_wlist_d26_Nm10")
 
 phAm8=np.loadtxt("zzz_phA_L26_d10_Nm8")
 lapAm8=np.loadtxt("zzz_lapA_L26_d10_Nm8")

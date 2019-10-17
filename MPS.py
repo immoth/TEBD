@@ -173,6 +173,13 @@ def addMPS(y1,y2,sign):
     
     return yan
 
+def MPSshape(mps):
+    mtp=copy.deepcopy(mps)
+    stp=[]
+    L=len(mtp)
+    for l in range(0,L):
+        stp.append(np.shape(mtp[l]))
+    return stp
 
 """
 "remember to keep track of the transpose if you reverse order"

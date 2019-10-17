@@ -18,6 +18,7 @@ import MPS
 
 import time
 
+
 a=time.time()
 
 "DMRG wave functions"
@@ -30,7 +31,7 @@ L=len(ypt)
 gxlist=[]
 gylist=[]
 plist=[]
-cut=5
+cut=4
 for l in range(0,cut):
     gxlist.append((-1)**(L-1)*ME.ME(ymn,gmpo.gxlMPO(l,L),ypn))
     gylist.append((-1)**(L-1)*ME.ME(ymn,gmpo.gylMPO(L-1-l,L),ypn))
@@ -46,7 +47,7 @@ print(ME.ME(ymn,gmpo.gxMPO(gxlist,L),MPO.apply_O(gmpo.gyMPO(gylist,L),ymn)))
 Nt=100
 dt=0.01
 Vmax=0.1
-wait=300
+wait=3000
 Nw=wait
 ramp=1.0
 L=len(ypt)
@@ -81,7 +82,7 @@ print("ramped up")
 ypr=copy.deepcopy(ypt)
 ymr=copy.deepcopy(ymt)
 
-"""
+
 "Zap"
 ypt=ME.apply_O(oz,ypt)
 ymt=ME.apply_O(oz,ymt)
@@ -95,7 +96,7 @@ ymt=CanF.LConAll(ymt)
 ypz=copy.deepcopy(ypt)
 ymz=copy.deepcopy(ymt)
 print("zapped")
-"""
+
 
 
 "wait"
