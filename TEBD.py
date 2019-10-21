@@ -46,8 +46,8 @@ print(ME.ME(ymn,gmpo.gxMPO(gxlist,L),MPO.apply_O(gmpo.gyMPO(gylist,L),ymn)))
 
 Nt=100
 dt=0.01
-Vmax=0.1
-wait=3000
+Vmax=1.0
+wait=2000
 Nw=wait
 ramp=1.0
 L=len(ypt)

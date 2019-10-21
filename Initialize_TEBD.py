@@ -23,7 +23,7 @@ params=np.array([tua,Delta,U,mu])
 np.savetxt("params",params)
 
 "Sizes"
-L=16
+L=26
 DD=3
 dd=2
 
