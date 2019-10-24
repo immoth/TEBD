@@ -7,40 +7,42 @@ Created on Fri Sep 27 10:58:28 2019
 import matplotlib.pyplot as plt
 import numpy as np
 
+fileparm="_BD_L26_d2_N10+"
+
 """
-np.savetxt("zzz_tr_phA_L26_d30_N2",phA)
-np.savetxt("zzz_tr_phB_L26_d30_N2",phB)
-np.savetxt("zzz_tr_lapA_L26_d30_N2",lapA)
-np.savetxt("zzz_tr_lapB_L26_d30_N2",lapB)
-np.savetxt("zzz_tr_parA_L26_d30_N2",parP)
-np.savetxt("zzz_tr_parB_L26_d30_N2",parM)
-np.savetxt("zzz_tr_Ntlist_L26_d30_N2",Ntlist)
+np.savetxt("zzz"+fileparm+"phA",phA)
+np.savetxt("zzz"+fileparm+"phB",phB)
+np.savetxt("zzz"+fileparm+"lapA",lapA)
+np.savetxt("zzz"+fileparm+"lapB",lapB)
+np.savetxt("zzz"+fileparm+"parA",parP)
+np.savetxt("zzz"+fileparm+"parB",parM)
+np.savetxt("zzz"+fileparm+"Ntlist",BDlist)
 
-np.savetxt("zzz_tr_TparP_L26_d30_N2",np.real(TparP))
-np.savetxt("zzz_tr_TparM_L26_d30_N2",np.real(TparM))
-np.savetxt("zzz_tr_EendP_L26_d30_N2",np.real(EendP))
-np.savetxt("zzz_tr_EendM_L26_d30_N2",np.real(EendM))
-np.savetxt("zzz_tr_EmidP_L26_d30_N2",np.real(EmidP))
-np.savetxt("zzz_tr_EmidM_L26_d30_N2",np.real(EmidM))
+np.savetxt("zzz"+fileparm+"TparP",np.real(TparP))
+np.savetxt("zzz"+fileparm+"TparM",np.real(TparM))
+np.savetxt("zzz"+fileparm+"EendP",np.real(EendP))
+np.savetxt("zzz"+fileparm+"EendM",np.real(EendM))
+np.savetxt("zzz"+fileparm+"EmidP",np.real(EmidP))
+np.savetxt("zzz"+fileparm+"EmidM",np.real(EmidM))
 
-np.savetxt("zzz_tr_timeL_L26_d30_N2",np.real(timeL))
+np.savetxt("zzz"+fileparm+"timeL",np.real(timeL))
 """
 
 
-phAL=np.loadtxt("zzz_tr_phA_L26_d30_N2")
-phBL=np.loadtxt("zzz_tr_phB_L26_d30_N2")
-lapAL=np.loadtxt("zzz_tr_lapA_L26_d30_N2")
-lapBL=np.loadtxt("zzz_tr_lapB_L26_d30_N2")
-parPL=np.loadtxt("zzz_tr_parA_L26_d30_N2")
-parML=np.loadtxt("zzz_tr_parB_L26_d30_N2")
-wlistL=np.loadtxt("zzz_tr_Ntlist_L26_d30_N2")
+phAL=np.loadtxt("zzz"+fileparm+"phA")
+phBL=np.loadtxt("zzz"+fileparm+"phB")
+lapAL=np.loadtxt("zzz"+fileparm+"lapA")
+lapBL=np.loadtxt("zzz"+fileparm+"lapB")
+parPL=np.loadtxt("zzz"+fileparm+"parA")
+parML=np.loadtxt("zzz"+fileparm+"parB")
+wlistL=np.loadtxt("zzz"+fileparm+"Ntlist")
 
-TparPL=np.loadtxt("zzz_tr_TparP_L26_d30_N2")
-TparML=np.loadtxt("zzz_tr_TparM_L26_d30_N2")
-EendPL=np.loadtxt("zzz_tr_EendP_L26_d30_N2")
-EendML=np.loadtxt("zzz_tr_EendM_L26_d30_N2")
+TparPL=np.loadtxt("zzz"+fileparm+"TparP")
+TparML=np.loadtxt("zzz"+fileparm+"TparM")
+EendPL=np.loadtxt("zzz"+fileparm+"EendP")
+EendML=np.loadtxt("zzz"+fileparm+"EendM")
 
-timeLL=np.loadtxt("zzz_tr_timeL_L26_d30_N2")
+timeLL=np.loadtxt("zzz"+fileparm+"timeL")
 
 
 plt.figure("Phase Error")
@@ -49,7 +51,7 @@ plt.figure("Phase Error")
 plt.scatter(wlistL,phAL,s=50)
 plt.xlabel("Ramp Time")
 plt.ylabel("Phase Error")
-plt.savefig("zzy_tr_phA_L26_d30_N2.svg")
+plt.savefig("zzy"+fileparm+"phA.svg")
 plt.show()
 
 plt.figure("Parity Error")
@@ -58,7 +60,7 @@ plt.figure("Parity Error")
 plt.scatter(wlistL,parPL,s=50)
 plt.xlabel("Ramp Time")
 plt.ylabel("Parity Error")
-plt.savefig("zzy_tr_parA_L26_d30_N2.svg")
+plt.savefig("zzy"+fileparm+"parA.svg")
 plt.show()
 
 plt.figure("Lap Error")
@@ -67,7 +69,7 @@ plt.figure("Lap Error")
 plt.scatter(wlistL,lapAL,s=50)
 plt.xlabel("Ramp Time")
 plt.ylabel("Lap Error")
-plt.savefig("zzy_tr_lapA_L26_d30_N2.svg")
+plt.savefig("zzy"+fileparm+"lapA.svg")
 plt.show()
 
 
@@ -77,7 +79,7 @@ plt.figure("Total Parity")
 plt.scatter(wlistL,TparPL,s=50)
 plt.xlabel("Ramp Time")
 plt.ylabel("Total Parity")
-plt.savefig("zzy_tr_TparP_L26_d30_N2.svg")
+plt.savefig("zzy"+fileparm+"TparP.svg")
 plt.show()
 
 plt.figure("Energy")
@@ -86,6 +88,6 @@ plt.figure("Energy")
 plt.scatter(wlistL,EendPL-EendML,s=50)
 plt.xlabel("Ramp Time")
 plt.ylabel("Energy")
-plt.savefig("zzy_tr_EendPL_L26_d30_N2.svg")
+plt.savefig("zzy"+fileparm+"EendPL.svg")
 plt.show()
 

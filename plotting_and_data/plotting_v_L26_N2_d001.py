@@ -17,6 +17,8 @@ np.savetxt("zzz_v_parB_L26_d001_N2",parM)
 np.savetxt("zzz_v_vlist_L26_d001_N2",vlist)
 """
 
+phAL14=np.loadtxt("zzz_v_phA_L14_d001_N2")
+
 phAL=np.loadtxt("zzz_v_phA_L26_d001_N2")
 phBL=np.loadtxt("zzz_v_phB_L26_d001_N2")
 lapAL=np.loadtxt("zzz_v_lapA_L26_d001_N2")
@@ -31,8 +33,9 @@ for i in range(0,100):
 
 plt.figure("Phase Error")
 plt.xlim(-0.0,0.03)
-plt.ylim(-0.00,0.0003)
+plt.ylim(-0.00,0.001)
 plt.scatter(wlistL,phAL,s=50)
+plt.scatter(wlistL,phAL14,s=50)
 #plt.scatter(wlistL,sq,s=10)
 plt.savefig("zzy_v_phA_L26_d001_N2.svg")
 plt.xlabel("Wiat Time")

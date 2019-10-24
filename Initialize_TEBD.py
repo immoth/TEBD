@@ -28,8 +28,8 @@ DD=3
 dd=2
 
 "Zap opperator"
-n1=int(L/2)-1
-n2=int(L/2)
+n1=10
+n2=L-10
 oz=Zap.zapN(n1,n2,L)
 
 y=DMRG.DMRG(L,DD,dd,0)
