@@ -12,7 +12,7 @@ import time
 import H_time_mu
 import scipy.linalg.lapack as lpk
 
-cut=20
+cut=40
 
 "keep in mind that this calculation takes considers mu to be 1/2*mu"
 def U2(V,dt,s):

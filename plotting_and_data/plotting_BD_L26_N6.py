@@ -7,9 +7,9 @@ Created on Fri Sep 27 10:58:28 2019
 import matplotlib.pyplot as plt
 import numpy as np
 
-fileparm="_BD_L26_d2_N6"
+fileparm="_BD_L26_d2_N6_"
 
-
+"""
 np.savetxt("zzz"+fileparm+"phA",phA)
 np.savetxt("zzz"+fileparm+"phB",phB)
 np.savetxt("zzz"+fileparm+"lapA",lapA)
@@ -26,7 +26,7 @@ np.savetxt("zzz"+fileparm+"EmidP",np.real(EmidP))
 np.savetxt("zzz"+fileparm+"EmidM",np.real(EmidM))
 
 np.savetxt("zzz"+fileparm+"timeL",np.real(timeL))
-
+"""
 
 
 phAL=np.loadtxt("zzz"+fileparm+"phA")
@@ -49,7 +49,7 @@ plt.figure("Phase Error")
 #plt.xlim(-0.01,0.1)
 #plt.ylim(-0.01,0.02)
 plt.scatter(wlistL,phAL,s=50)
-plt.xlabel("Ramp Time")
+plt.xlabel("Bond Dimension")
 plt.ylabel("Phase Error")
 plt.savefig("zzy"+fileparm+"phA.svg")
 plt.show()
@@ -58,7 +58,7 @@ plt.figure("Parity Error")
 #plt.xlim(-0.01,0.2)
 #plt.ylim(-0.01,0.1)
 plt.scatter(wlistL,parPL,s=50)
-plt.xlabel("Ramp Time")
+plt.xlabel("Bond Dimension")
 plt.ylabel("Parity Error")
 plt.savefig("zzy"+fileparm+"parA.svg")
 plt.show()
@@ -67,7 +67,7 @@ plt.figure("Lap Error")
 #plt.xlim(-0.01,0.2)
 #plt.ylim(-0.01,0.05)
 plt.scatter(wlistL,lapAL,s=50)
-plt.xlabel("Ramp Time")
+plt.xlabel("Bond Dimension")
 plt.ylabel("Lap Error")
 plt.savefig("zzy"+fileparm+"lapA.svg")
 plt.show()
@@ -77,7 +77,7 @@ plt.figure("Total Parity")
 #plt.xlim(-0.01,0.2)
 #plt.ylim(-0.01,0.05)
 plt.scatter(wlistL,TparPL,s=50)
-plt.xlabel("Ramp Time")
+plt.xlabel("Bond Dimension")
 plt.ylabel("Total Parity")
 plt.savefig("zzy"+fileparm+"TparP.svg")
 plt.show()
@@ -86,7 +86,7 @@ plt.figure("Energy")
 #plt.xlim(-0.01,0.2)
 #plt.ylim(-0.01,0.05)
 plt.scatter(wlistL,EendPL-EendML,s=50)
-plt.xlabel("Ramp Time")
+plt.xlabel("Bond Dimension")
 plt.ylabel("Energy")
 plt.savefig("zzy"+fileparm+"EendPL.svg")
 plt.show()

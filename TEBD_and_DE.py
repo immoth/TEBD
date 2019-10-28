@@ -13,6 +13,7 @@ import U_MPO
 import MPO
 import Matrix_Element as ME
 import Zap
+import MPO_time
 
 "bracket"
 def bkt(a,b,c):
@@ -91,7 +92,7 @@ def gB():
 Nt=100
 dt=0.01
 Vmax=0.1
-wait=100
+wait=50
 Nw=wait
 L=len(ypt)
 
@@ -108,8 +109,21 @@ for nt in range(0,Nt):
     dV.append(lng.expm(-1j*H(eF(nt*dt))*dt)) 
     
 
-"TEBD operators are in Apply_MPO"
 
+
+EmidPw=ME.ME(ypt,MPO_time.HMPO(eF((Nt-1)*dt),L),ypt)
+EmidMw=ME.ME(ymt,MPO_time.HMPO(eF((Nt-1)*dt),L),ymt)
+
+
+psipy=MPS.PsiFromY(ypt)
+psimy=MPS.PsiFromY(ymt)
+HED=MPO.MPOtoO(MPO_time.HMPO(eF((Nt-1)*dt),L))    
+EmidPwED=bkt(psip,H(eF(nt*dt)),psip)
+EmidMwED=bkt(psim,H(eF(nt*dt)),psim)
+
+print("Emids")
+print(EmidPw-EmidMw)
+print(EmidPwED-EmidMwED)
 
 
 "ramp up"
@@ -123,6 +137,7 @@ for nt in range(0,Nt):
     ymt=U_MPO.Apply_Uright(ymt,eF(nt*dt),dt,1)
     psim=np.dot(dU[nt],psim)
     psim=np.dot(dU[nt],psim)
+
 
 psipr=psip
 ypr=ypt

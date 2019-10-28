@@ -23,13 +23,13 @@ params=np.array([tua,Delta,U,mu])
 np.savetxt("params",params)
 
 "Sizes"
-L=26
+L=6
 DD=3
 dd=2
 
 "Zap opperator"
-n1=10
-n2=L-10
+n1=int(L/2-1)
+n2=int(L/2)
 oz=Zap.zapN(n1,n2,L)
 
 y=DMRG.DMRG(L,DD,dd,0)
