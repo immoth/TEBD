@@ -9,7 +9,7 @@ import numpy as np
 
 fileparm="_L6_N2_BD40_ED_"
 
-
+"""
 np.savetxt("zzz"+fileparm+"phA",phA)
 np.savetxt("zzz"+fileparm+"phB",phB)
 np.savetxt("zzz"+fileparm+"lapA",lapA)
@@ -40,7 +40,7 @@ np.savetxt("zzz"+fileparm+"EmidP_ED",np.real(EmidP_ED))
 np.savetxt("zzz"+fileparm+"EmidM_ED",np.real(EmidM_ED))
 
 np.savetxt("zzz"+fileparm+"timeL",np.real(runtime))
-
+"""
 
 
 phAL=np.loadtxt("zzz"+fileparm+"phA")
@@ -85,7 +85,7 @@ plt.scatter(wlistL,phAL,s=50)
 plt.scatter(wlistL,phAL_ED,s=20)
 plt.xlabel("Ramp Time")
 plt.ylabel("Phase Error")
-plt.savefig("zzy"+fileparm+"phA.svg")
+#plt.savefig("zzy"+fileparm+"phA.svg")
 plt.show()
 
 plt.figure("Parity Error")
@@ -95,7 +95,7 @@ plt.scatter(wlistL,parPL,s=50)
 plt.scatter(wlistL,parPL_ED,s=20)
 plt.xlabel("Ramp Time")
 plt.ylabel("Parity Error")
-plt.savefig("zzy"+fileparm+"parA.svg")
+#plt.savefig("zzy"+fileparm+"parA.svg")
 plt.show()
 
 plt.figure("Lap Error")
@@ -105,7 +105,7 @@ plt.scatter(wlistL,lapAL,s=50)
 plt.scatter(wlistL,lapAL_ED,s=20)
 plt.xlabel("Ramp Time")
 plt.ylabel("Lap Error")
-plt.savefig("zzy"+fileparm+"lapA.svg")
+#plt.savefig("zzy"+fileparm+"lapA.svg")
 plt.show()
 
 
@@ -116,7 +116,7 @@ plt.scatter(wlistL,TparPL,s=50)
 plt.scatter(wlistL,TparPL_ED,s=20)
 plt.xlabel("Ramp Time")
 plt.ylabel("Total Parity")
-plt.savefig("zzy"+fileparm+"TparP.svg")
+#plt.savefig("zzy"+fileparm+"TparP.svg")
 plt.show()
 
 plt.figure("Energy")
@@ -126,7 +126,7 @@ plt.scatter(wlistL,EendML-EendML,s=50)
 plt.scatter(wlistL,EendPL_ED-EendML_ED,s=20)
 plt.xlabel("Ramp Time")
 plt.ylabel("Energy")
-plt.savefig("zzy"+fileparm+"EendPL.svg")
+#plt.savefig("zzy"+fileparm+"EendPL.svg")
 plt.show()
 
 
@@ -137,5 +137,5 @@ plt.scatter(wlistL,EmidPL-EmidML,s=50)
 plt.scatter(wlistL,EmidPL_ED-EmidML_ED,s=20)
 plt.xlabel("Ramp Time")
 plt.ylabel("Energy")
-plt.savefig("zzy"+fileparm+"EmidPL.svg")
+#plt.savefig("zzy"+fileparm+"EmidPL.svg")
 plt.show()

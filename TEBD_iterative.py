@@ -14,6 +14,7 @@ import U_MPO
 import Zap
 import GammaL_MPO as gmpo
 import Parity_Operator as PO
+import MPO_time
 
 
 "DMRG wave functions"
@@ -39,16 +40,18 @@ print(ME.ME(ymn,gmpo.gxMPO(gxlist,L),MPO.apply_O(gmpo.gyMPO(gylist,L),ymn)))
 
 "Now I just need to copy TEBD from TEBD_and_ED"
 
-Nt=100
+BD=40 #must be changed in U_MPO
+Nt=500
 dt=0.01
-Vmax=0.10000001
+Vmax=0.1
 #wait=3000
 #Nw=wait
 L=len(ypt)
 
 "Evolution function H(eF(t*dt))"
+ramp=1/(Nt*dt)
 def eF(t):
-    return Vmax*np.sin(t*np.pi/2)
+    return Vmax*np.sin(ramp*t*np.pi/2)
 
 phA=[]
 phB=[]
@@ -108,8 +111,8 @@ for wait in range(0,3000,30):
     yphold=copy.deepcopy(ypt)
     ymhold=copy.deepcopy(ymt)
     
-    EmidPw=ME.ME(ypt,MPO.HMPO(L),ypt)
-    EmidMw=ME.ME(ymt,MPO.HMPO(L),ymt)
+    EmidPw=ME.ME(ypt,MPO_time.HMPO(eF((Nt-1)*dt),L),ypt)
+    EmidMw=ME.ME(ymt,MPO_time.HMPO(eF((Nt-1)*dt),L),ymt)
     
     EmidP.append(EmidPw)
     EmidM.append(EmidMw)
@@ -162,7 +165,33 @@ for wait in range(0,3000,30):
     TparM.append(TparMw)
     EendP.append(EendPw)
     EendM.append(EendMw)
-
+    
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+str(mu)+"_J"+str(tua)+"_D"+str(Delta)+"_V"+str(Vmax)+"_L"+str(L)+"_tr"+str(Nt)+"_tw"+str('F')+"_dt"+str(dt)+"_BD"+str(BD)+"phA"+".txt","wb") as f:
+        pickle.dump(phA,f)
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+str(mu)+"_J"+str(tua)+"_D"+str(Delta)+"_V"+str(Vmax)+"_L"+str(L)+"_tr"+str(Nt)+"_tw"+str('F')+"_dt"+str(dt)+"_BD"+str(BD)+"phB"+".txt","wb") as f:
+        pickle.dump(phB,f)
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+str(mu)+"_J"+str(tua)+"_D"+str(Delta)+"_V"+str(Vmax)+"_L"+str(L)+"_tr"+str(Nt)+"_tw"+str('F')+"_dt"+str(dt)+"_BD"+str(BD)+"lapA"+".txt","wb") as f:
+        pickle.dump(lapA,f)
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+str(mu)+"_J"+str(tua)+"_D"+str(Delta)+"_V"+str(Vmax)+"_L"+str(L)+"_tr"+str(Nt)+"_tw"+str('F')+"_dt"+str(dt)+"_BD"+str(BD)+"lapB"+".txt","wb") as f:
+        pickle.dump(lapB,f)
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+str(mu)+"_J"+str(tua)+"_D"+str(Delta)+"_V"+str(Vmax)+"_L"+str(L)+"_tr"+str(Nt)+"_tw"+str('F')+"_dt"+str(dt)+"_BD"+str(BD)+"parP"+".txt","wb") as f:
+        pickle.dump(parP,f)
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+str(mu)+"_J"+str(tua)+"_D"+str(Delta)+"_V"+str(Vmax)+"_L"+str(L)+"_tr"+str(Nt)+"_tw"+str('F')+"_dt"+str(dt)+"_BD"+str(BD)+"parM"+".txt","wb") as f:
+        pickle.dump(parM,f)
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+str(mu)+"_J"+str(tua)+"_D"+str(Delta)+"_V"+str(Vmax)+"_L"+str(L)+"_tr"+str(Nt)+"_tw"+str('F')+"_dt"+str(dt)+"_BD"+str(BD)+"wlist"+".txt","wb") as f:
+        pickle.dump(wlist,f)
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+str(mu)+"_J"+str(tua)+"_D"+str(Delta)+"_V"+str(Vmax)+"_L"+str(L)+"_tr"+str(Nt)+"_tw"+str('F')+"_dt"+str(dt)+"_BD"+str(BD)+"TparP"+".txt","wb") as f:
+        pickle.dump(TparP,f)
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+str(mu)+"_J"+str(tua)+"_D"+str(Delta)+"_V"+str(Vmax)+"_L"+str(L)+"_tr"+str(Nt)+"_tw"+str('F')+"_dt"+str(dt)+"_BD"+str(BD)+"TparM"+".txt","wb") as f:
+        pickle.dump(TparM,f)
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+str(mu)+"_J"+str(tua)+"_D"+str(Delta)+"_V"+str(Vmax)+"_L"+str(L)+"_tr"+str(Nt)+"_tw"+str('F')+"_dt"+str(dt)+"_BD"+str(BD)+"EendP"+".txt","wb") as f:
+        pickle.dump(EendP,f)
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+str(mu)+"_J"+str(tua)+"_D"+str(Delta)+"_V"+str(Vmax)+"_L"+str(L)+"_tr"+str(Nt)+"_tw"+str('F')+"_dt"+str(dt)+"_BD"+str(BD)+"EendM"+".txt","wb") as f:
+        pickle.dump(EendM,f)
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+str(mu)+"_J"+str(tua)+"_D"+str(Delta)+"_V"+str(Vmax)+"_L"+str(L)+"_tr"+str(Nt)+"_tw"+str('F')+"_dt"+str(dt)+"_BD"+str(BD)+"EmidP"+".txt","wb") as f:
+        pickle.dump(EmidP,f)
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+str(mu)+"_J"+str(tua)+"_D"+str(Delta)+"_V"+str(Vmax)+"_L"+str(L)+"_tr"+str(Nt)+"_tw"+str('F')+"_dt"+str(dt)+"_BD"+str(BD)+"EmidM"+".txt","wb") as f:
+        pickle.dump(EmidM,f)
 
 
 
