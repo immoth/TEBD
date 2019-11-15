@@ -12,6 +12,7 @@ import Matrix_Element as ME
 import Canonical_Form as CanF
 import numpy as np
 import Zap
+import copy
 
 "Parameters"
 tua=1;
@@ -22,8 +23,11 @@ mu=0.2;
 params=np.array([tua,Delta,U,mu])
 np.savetxt("params",params)
 
+"Basis Rotation"
+alpha=0
+
 "Sizes"
-L=6
+L=16
 DD=3
 dd=2
 
@@ -65,4 +69,18 @@ print("after canonicalization")
 print(ME.ME(ypn,op,ypn))
 print(ME.ME(ymn,om,ymn))
 
+"Rotates the basis"
+if(alpha > 10**(-10)):
+    ya=MPS.addMPS(ypn,ymn,alpha)
+    yb=MPS.addMPS(ypn,ymn,-1/alpha)
+else:
+    ya=copy.deepcopy(ypn)
+    yb=copy.deepcopy(ymn)
+ypn=copy.deepcopy(ya)
+ymn=copy.deepcopy(yb)
+
+
+print("after rotation")
+print(ME.ME(ypn,op,ypn))
+print(ME.ME(ymn,om,ymn))
 

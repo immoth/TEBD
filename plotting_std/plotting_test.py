@@ -20,40 +20,40 @@ BDL=BD
 directory="C:\\Users\\jsten\\Documents\\Reaserch\\Interaction Error\\TEBD_clean\\data_std\\"
 directoryF="C:\\Users\\jsten\\Documents\\Reaserch\\Interaction Error\\TEBD_clean\\figures_std\\"
 
-file="_m"+str(muL)+"_J"+str(tuaL)+"_D"+str(DeltaL)+"_V"+str(VmaxL)+"_L"+str(LL)+"_tr"+str(NtL)+"_tw"+str('F')+"_dt"+str(dtL)+"_BD"+str(BDL)
+file="_m"+str(muL)+"_J"+str(tuaL)+"_D"+str(DeltaL)+"_V"+str(VmaxL)+"_L"+str(LL)+"_tr"+str(NtL)+"_tw"+str('F')+"_dt"+str(dtL)+"_BD"+str(BDL)+"_N"+str(n2-n1)
 
-with open(directory+file+"phA"+".txt","rb") as f:
+with open(directory+file+"_phA"+".txt","rb") as f:
     phAL=pickle.load(f)
-with open(directory+file+"phB"+".txt","rb") as f:
+with open(directory+file+"_phB"+".txt","rb") as f:
     phBL=pickle.load(f)
-with open(directory+file+"lapA"+".txt","rb") as f:
+with open(directory+file+"_lapA"+".txt","rb") as f:
     lapAL=pickle.load(f)
-with open(directory+file+"lapB"+".txt","rb") as f:
+with open(directory+file+"_lapB"+".txt","rb") as f:
     lapBL=pickle.load(f)
-with open(directory+file+"parP"+".txt","rb") as f:
+with open(directory+file+"_parP"+".txt","rb") as f:
     parPL=pickle.load(f)
-with open(directory+file+"parM"+".txt","rb") as f:
+with open(directory+file+"_parM"+".txt","rb") as f:
     parML=pickle.load(f)
-with open(directory+file+"wlist"+".txt","rb") as f:
+with open(directory+file+"_wlist"+".txt","rb") as f:
     wlistL=pickle.load(f)
-with open(directory+file+"TparP"+".txt","rb") as f:
+with open(directory+file+"_TparP"+".txt","rb") as f:
     TparPL=pickle.load(f)
-with open(directory+file+"TparM"+".txt","rb") as f:
+with open(directory+file+"_TparM"+".txt","rb") as f:
     TparML=pickle.load(f)
-with open(directory+file+"EendP"+".txt","rb") as f:
+with open(directory+file+"_EendP"+".txt","rb") as f:
     EendPL=pickle.load(f)
-with open(directory+file+"EendM"+".txt","rb") as f:
+with open(directory+file+"_EendM"+".txt","rb") as f:
     EendML=pickle.load(f)
-with open(directory+file+"EmidP"+".txt","rb") as f:
+with open(directory+file+"_EmidP"+".txt","rb") as f:
     EmidPL=pickle.load(f)
-with open(directory+file+"EmidM"+".txt","rb") as f:
+with open(directory+file+"_EmidM"+".txt","rb") as f:
     EmidML=pickle.load(f)
 
 
 
 plt.figure("Phase Error")
 #plt.xlim(-0.01,0.1)
-#plt.ylim(-0.01,0.02)
+#plt.ylim(-0.00,0.002)
 plt.scatter(wlistL,phAL,s=50)
 plt.xlabel("Ramp Time")
 plt.ylabel("Phase Error")
@@ -62,7 +62,7 @@ plt.show()
 
 plt.figure("Parity Error")
 #plt.xlim(-0.01,0.2)
-#plt.ylim(-0.01,0.1)
+#plt.ylim(-0.00,0.002)
 plt.scatter(wlistL,parPL,s=50)
 plt.xlabel("Ramp Time")
 plt.ylabel("Parity Error")
@@ -71,7 +71,7 @@ plt.show()
 
 plt.figure("Lap Error")
 #plt.xlim(-0.01,0.2)
-#plt.ylim(-0.01,0.05)
+#plt.ylim(-0.00,0.002)
 plt.scatter(wlistL,lapAL,s=50)
 plt.xlabel("Ramp Time")
 plt.ylabel("Lap Error")

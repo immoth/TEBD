@@ -166,31 +166,33 @@ for wait in range(0,3000,30):
     EendP.append(EendPw)
     EendM.append(EendMw)
     
-    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+str(mu)+"_J"+str(tua)+"_D"+str(Delta)+"_V"+str(Vmax)+"_L"+str(L)+"_tr"+str(Nt)+"_tw"+str('F')+"_dt"+str(dt)+"_BD"+str(BD)+"phA"+".txt","wb") as f:
+    filename=str(mu)+"_J"+str(tua)+"_D"+str(Delta)+"_V"+str(Vmax)+"_L"+str(L)+"_tr"+str(Nt)+"_tw"+str('F')+"_dt"+str(dt)+"_BD"+str(BD)+"_N"+str(n2-n1)+"_alpha"+str(alpha)
+    
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+filename+"_phA"+".txt","wb") as f:
         pickle.dump(phA,f)
-    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+str(mu)+"_J"+str(tua)+"_D"+str(Delta)+"_V"+str(Vmax)+"_L"+str(L)+"_tr"+str(Nt)+"_tw"+str('F')+"_dt"+str(dt)+"_BD"+str(BD)+"phB"+".txt","wb") as f:
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+filename+"_phB"+".txt","wb") as f:
         pickle.dump(phB,f)
-    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+str(mu)+"_J"+str(tua)+"_D"+str(Delta)+"_V"+str(Vmax)+"_L"+str(L)+"_tr"+str(Nt)+"_tw"+str('F')+"_dt"+str(dt)+"_BD"+str(BD)+"lapA"+".txt","wb") as f:
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+filename+"_lapA"+".txt","wb") as f:
         pickle.dump(lapA,f)
-    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+str(mu)+"_J"+str(tua)+"_D"+str(Delta)+"_V"+str(Vmax)+"_L"+str(L)+"_tr"+str(Nt)+"_tw"+str('F')+"_dt"+str(dt)+"_BD"+str(BD)+"lapB"+".txt","wb") as f:
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+filename+"_lapB"+".txt","wb") as f:
         pickle.dump(lapB,f)
-    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+str(mu)+"_J"+str(tua)+"_D"+str(Delta)+"_V"+str(Vmax)+"_L"+str(L)+"_tr"+str(Nt)+"_tw"+str('F')+"_dt"+str(dt)+"_BD"+str(BD)+"parP"+".txt","wb") as f:
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+filename+"_parP"+".txt","wb") as f:
         pickle.dump(parP,f)
-    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+str(mu)+"_J"+str(tua)+"_D"+str(Delta)+"_V"+str(Vmax)+"_L"+str(L)+"_tr"+str(Nt)+"_tw"+str('F')+"_dt"+str(dt)+"_BD"+str(BD)+"parM"+".txt","wb") as f:
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+filename+"_parM"+".txt","wb") as f:
         pickle.dump(parM,f)
-    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+str(mu)+"_J"+str(tua)+"_D"+str(Delta)+"_V"+str(Vmax)+"_L"+str(L)+"_tr"+str(Nt)+"_tw"+str('F')+"_dt"+str(dt)+"_BD"+str(BD)+"wlist"+".txt","wb") as f:
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+filename+"_wlist"+".txt","wb") as f:
         pickle.dump(wlist,f)
-    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+str(mu)+"_J"+str(tua)+"_D"+str(Delta)+"_V"+str(Vmax)+"_L"+str(L)+"_tr"+str(Nt)+"_tw"+str('F')+"_dt"+str(dt)+"_BD"+str(BD)+"TparP"+".txt","wb") as f:
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+filename+"_TparP"+".txt","wb") as f:
         pickle.dump(TparP,f)
-    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+str(mu)+"_J"+str(tua)+"_D"+str(Delta)+"_V"+str(Vmax)+"_L"+str(L)+"_tr"+str(Nt)+"_tw"+str('F')+"_dt"+str(dt)+"_BD"+str(BD)+"TparM"+".txt","wb") as f:
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+filename+"_TparM"+".txt","wb") as f:
         pickle.dump(TparM,f)
-    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+str(mu)+"_J"+str(tua)+"_D"+str(Delta)+"_V"+str(Vmax)+"_L"+str(L)+"_tr"+str(Nt)+"_tw"+str('F')+"_dt"+str(dt)+"_BD"+str(BD)+"EendP"+".txt","wb") as f:
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+filename+"_EendP"+".txt","wb") as f:
         pickle.dump(EendP,f)
-    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+str(mu)+"_J"+str(tua)+"_D"+str(Delta)+"_V"+str(Vmax)+"_L"+str(L)+"_tr"+str(Nt)+"_tw"+str('F')+"_dt"+str(dt)+"_BD"+str(BD)+"EendM"+".txt","wb") as f:
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+filename+"_EendM"+".txt","wb") as f:
         pickle.dump(EendM,f)
-    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+str(mu)+"_J"+str(tua)+"_D"+str(Delta)+"_V"+str(Vmax)+"_L"+str(L)+"_tr"+str(Nt)+"_tw"+str('F')+"_dt"+str(dt)+"_BD"+str(BD)+"EmidP"+".txt","wb") as f:
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+filename+"_EmidP"+".txt","wb") as f:
         pickle.dump(EmidP,f)
-    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+str(mu)+"_J"+str(tua)+"_D"+str(Delta)+"_V"+str(Vmax)+"_L"+str(L)+"_tr"+str(Nt)+"_tw"+str('F')+"_dt"+str(dt)+"_BD"+str(BD)+"EmidM"+".txt","wb") as f:
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+filename+"_EmidM"+".txt","wb") as f:
         pickle.dump(EmidM,f)
 
 

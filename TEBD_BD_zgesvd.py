@@ -15,6 +15,8 @@ import Canonical_Form as CanF
 import GammaL_MPO as gmpo
 import Parity_and_Entropy as PaE
 import MPS
+import pickle
+import MPO_time
 
 import time
 
@@ -44,13 +46,14 @@ print(ME.ME(ymn,gmpo.gxMPO(gxlist,L),MPO.apply_O(gmpo.gyMPO(gylist,L),ymn)))
 
 "Now I just need to copy TEBD from TEBD_and_ED"
 
-Nt=100
+Nt=500
 dt=0.01
 Vmax=0.1
 wait=3000
 Nw=wait
-ramp=1.0
+ramp=1/(Nt*dt)
 L=len(ypt)
+"Evolution function H(eF(t*dt))"
 
 
 phA=[]
@@ -59,7 +62,7 @@ lapA=[]
 lapB=[]
 parP=[]
 parM=[]
-BDlist=[]
+wlist=[]
 
 TparP=[]
 TparM=[]
@@ -142,8 +145,8 @@ for BD in range(5,60,5):
         pmlist.append(PaE.parL(ymt))
         """
     
-    EmidPw=ME.ME(ypt,MPO.HMPO(L),ypt)
-    EmidMw=ME.ME(ymt,MPO.HMPO(L),ymt)
+    EmidPw=ME.ME(ypt,MPO_time.HMPO(eF((Nt-1)*dt),L),ypt)
+    EmidMw=ME.ME(ymt,MPO_time.HMPO(eF((Nt-1)*dt),L),ymt)
     EmidP.append(EmidPw)
     EmidM.append(EmidMw)
     
@@ -203,7 +206,7 @@ for BD in range(5,60,5):
     lapB.append(lapBw)
     parP.append(1-abs(parPw))
     parM.append(1-abs(parMw))
-    BDlist.append(BD)
+    wlist.append(BD)
     
     TparP.append(TparPw)
     TparM.append(TparMw)
@@ -213,7 +216,34 @@ for BD in range(5,60,5):
     timeL.append((b-a)/60)
 
 
-
+    filename=str(mu)+"_J"+str(tua)+"_D"+str(Delta)+"_V"+str(Vmax)+"_L"+str(L)+"_tr"+str(Nt)+"_tw"+str(Nw)+"_dt"+str(dt)+"_BD"+str('F')+"_N"+str(n2-n1)
+    
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+filename+"_phA"+".txt","wb") as f:
+        pickle.dump(phA,f)
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+filename+"_phB"+".txt","wb") as f:
+        pickle.dump(phB,f)
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+filename+"_lapA"+".txt","wb") as f:
+        pickle.dump(lapA,f)
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+filename+"_lapB"+".txt","wb") as f:
+        pickle.dump(lapB,f)
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+filename+"_parP"+".txt","wb") as f:
+        pickle.dump(parP,f)
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+filename+"_parM"+".txt","wb") as f:
+        pickle.dump(parM,f)
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+filename+"_wlist"+".txt","wb") as f:
+        pickle.dump(wlist,f)
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+filename+"_TparP"+".txt","wb") as f:
+        pickle.dump(TparP,f)
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+filename+"_TparM"+".txt","wb") as f:
+        pickle.dump(TparM,f)
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+filename+"_EendP"+".txt","wb") as f:
+        pickle.dump(EendP,f)
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+filename+"_EendM"+".txt","wb") as f:
+        pickle.dump(EendM,f)
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+filename+"_EmidP"+".txt","wb") as f:
+        pickle.dump(EmidP,f)
+    with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+filename+"_EmidM"+".txt","wb") as f:
+        pickle.dump(EmidM,f)
 
 
 
