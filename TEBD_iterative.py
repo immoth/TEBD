@@ -40,10 +40,7 @@ print(ME.ME(ymn,gmpo.gxMPO(gxlist,L),MPO.apply_O(gmpo.gyMPO(gylist,L),ymn)))
 
 "Now I just need to copy TEBD from TEBD_and_ED"
 
-BD=40 #must be changed in U_MPO
-Nt=500
-dt=0.01
-Vmax=0.1
+543
 #wait=3000
 #Nw=wait
 L=len(ypt)

@@ -27,7 +27,7 @@ np.savetxt("params",params)
 alpha=0
 
 "Sizes"
-L=16
+L=22
 DD=3
 dd=2
 
