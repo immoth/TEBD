@@ -29,21 +29,28 @@ gylist=[]
 plist=[]
 cut=4
 for l in range(0,cut):
-    gxlist.append((-1)**(L-1)*ME.ME(ymn,gmpo.gxlMPO(l,L),ypn))
-    gylist.append((-1)**(L-1)*ME.ME(ymn,gmpo.gylMPO(L-1-l,L),ypn))
+    gxlist.append((-1)**(L-1)*ME.ME(ymn0,gmpo.gxlMPO(l,L),ypn0))
+    gylist.append((-1)**(L-1)*ME.ME(ymn0,gmpo.gylMPO(L-1-l,L),ypn0))
 "there is some (-1)**(L-1) in gxlMPO and gylMPO that shouldn't be there"
-        
-print(ME.ME(ymn,gmpo.gxMPO(gxlist,L),ypn))
-print(ME.ME(ymn,gmpo.gyMPO(gylist,L),ypn))
+
+s1=aa*ME.ME(ymn,gmpo.gxMPO(gxlist,L),ypn)+bb*ME.ME(ymn,gmpo.gxMPO(gxlist,L),MPO.apply_O(gmpo.gyMPO(gylist,L),ypn))
+s2=ME.ME(ymn,gmpo.gyMPO(gylist,L),ypn)               
+               
+print(s1)
+print(s2)
 print(ME.ME(ypn,gmpo.gxMPO(gxlist,L),MPO.apply_O(gmpo.gyMPO(gylist,L),ypn)))
 print(ME.ME(ymn,gmpo.gxMPO(gxlist,L),MPO.apply_O(gmpo.gyMPO(gylist,L),ymn)))
 
 "Now I just need to copy TEBD from TEBD_and_ED"
 
-543
-#wait=3000
-#Nw=wait
+Nt=500
+dt=0.01
+Vmax=0.1
+wait=3000
+Nw=wait
+ramp=1/(Nt*dt)
 L=len(ypt)
+BD=40
 
 "Evolution function H(eF(t*dt))"
 ramp=1/(Nt*dt)
@@ -125,9 +132,9 @@ for wait in range(0,3000,30):
         
     print("ramped down")
     
-    phAw=abs(np.imag(np.log(ME.ME(ymt,gmpo.gxMPO(gxlist,L),ypt))))
-    phBw=abs(np.imag(np.log(ME.ME(ymt,gmpo.gyMPO(gylist,L),ypt))))
-    lapAw=abs(np.real(np.log(ME.ME(ymt,gmpo.gxMPO(gxlist,L),ypt))))
+    phAw=abs(np.imag(np.log(np.sign(s1)*aa*ME.ME(ymt,gmpo.gxMPO(gxlist,L),ypt)+np.sign(s1)*bb*ME.ME(ymt,gmpo.gxMPO(gxlist,L),MPO.apply_O(gmpo.gyMPO(gylist,L),ypt)))))
+    phBw=abs(np.imag(np.log(np.sign(s2)*ME.ME(ymt,gmpo.gyMPO(gylist,L),ypt))))
+    lapAw=abs(np.real(np.log(aa*ME.ME(ymt,gmpo.gxMPO(gxlist,L),ypt)+bb*ME.ME(ymt,gmpo.gxMPO(gxlist,L),MPO.apply_O(gmpo.gyMPO(gylist,L),ypt)))))
     lapBw=abs(np.real(np.log(ME.ME(ymt,gmpo.gyMPO(gylist,L),ypt))))
     parPw=ME.ME(ypt,gmpo.gxMPO(gxlist,L),MPO.apply_O(gmpo.gyMPO(gylist,L),ypt))
     parMw=ME.ME(ymt,gmpo.gxMPO(gxlist,L),MPO.apply_O(gmpo.gyMPO(gylist,L),ymt))

@@ -24,10 +24,10 @@ params=np.array([tua,Delta,U,mu])
 np.savetxt("params",params)
 
 "Basis Rotation"
-alpha=0
+alpha=0.7
 
 "Sizes"
-L=22
+L=20
 DD=3
 dd=2
 
@@ -69,6 +69,9 @@ print("after canonicalization")
 print(ME.ME(ypn,op,ypn))
 print(ME.ME(ymn,om,ymn))
 
+ypn0=copy.deepcopy(ypn)
+ymn0=copy.deepcopy(ymn)
+
 "Rotates the basis"
 if(alpha > 10**(-10)):
     ya=MPS.addMPS(ypn,ymn,alpha)
@@ -84,3 +87,8 @@ print("after rotation")
 print(ME.ME(ypn,op,ypn))
 print(ME.ME(ymn,om,ymn))
 
+b=alpha/np.sqrt(1+alpha**2)
+a=1/np.sqrt(1+alpha**2)
+
+aa=(a**2-b**2)
+bb=2*a*b

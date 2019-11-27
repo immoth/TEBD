@@ -12,7 +12,9 @@ VmaxL=0.1
 NtL=500
 dtL=0.01
 BDL=40
-alphaL=0
+alphaL=0.7
+#alphaL=0
+"Need to open 22 for alphaL=0"
 
 L10=10
 L12=12
@@ -32,10 +34,12 @@ fileL14="_m"+str(muL)+"_J"+str(tuaL)+"_D"+str(DeltaL)+"_V"+str(VmaxL)+"_L"+str(L
 fileL16="_m"+str(muL)+"_J"+str(tuaL)+"_D"+str(DeltaL)+"_V"+str(VmaxL)+"_L"+str(L16)+"_tr"+str(NtL)+"_tw"+str('F')+"_dt"+str(dtL)+"_BD"+str(BD)+"_N"+str(n2-n1)+"_alpha"+str(alphaL)
 fileL18="_m"+str(muL)+"_J"+str(tuaL)+"_D"+str(DeltaL)+"_V"+str(VmaxL)+"_L"+str(L18)+"_tr"+str(NtL)+"_tw"+str('F')+"_dt"+str(dtL)+"_BD"+str(BD)+"_N"+str(n2-n1)+"_alpha"+str(alphaL)
 fileL20="_m"+str(muL)+"_J"+str(tuaL)+"_D"+str(DeltaL)+"_V"+str(VmaxL)+"_L"+str(L20)+"_tr"+str(NtL)+"_tw"+str('F')+"_dt"+str(dtL)+"_BD"+str(BD)+"_N"+str(n2-n1)+"_alpha"+str(alphaL)
-fileL22="_m"+str(muL)+"_J"+str(tuaL)+"_D"+str(DeltaL)+"_V"+str(VmaxL)+"_L"+str(L22)+"_tr"+str(NtL)+"_tw"+str('F')+"_dt"+str(dtL)+"_BD"+str(BD)+"_N"+str(n2-n1)+"_alpha"+str(alphaL)
+#fileL22="_m"+str(muL)+"_J"+str(tuaL)+"_D"+str(DeltaL)+"_V"+str(VmaxL)+"_L"+str(L22)+"_tr"+str(NtL)+"_tw"+str('F')+"_dt"+str(dtL)+"_BD"+str(BD)+"_N"+str(n2-n1)+"_alpha"+str(alphaL)
 
 with open(directory+fileL10+"_wlist"+".txt","rb") as f:
     wlistL=pickle.load(f)
+with open(directory+fileL10+"_phA"+".txt","rb") as f:
+    phAL10=pickle.load(f)
 with open(directory+fileL12+"_phA"+".txt","rb") as f:
     phAL12=pickle.load(f)
 with open(directory+fileL14+"_phA"+".txt","rb") as f:
@@ -46,8 +50,8 @@ with open(directory+fileL18+"_phA"+".txt","rb") as f:
     phAL18=pickle.load(f)
 with open(directory+fileL20+"_phA"+".txt","rb") as f:
     phAL20=pickle.load(f)
-with open(directory+fileL22+"_phA"+".txt","rb") as f:
-    phAL22=pickle.load(f)
+#with open(directory+fileL22+"_phA"+".txt","rb") as f:
+#    phAL22=pickle.load(f)
     
 file="_m"+str(muL)+"_J"+str(tuaL)+"_D"+str(DeltaL)+"_V"+str(VmaxL)+"_L"+str("L10_12_14_16_18_20_22")+"_tr"+str(NtL)+"_tw"+str('F')+"_dt"+str(dtL)+"_BD"+str(BD)+"_N"+str(n2-n1)+"_alpha"+str(alphaL)    
 plt.figure("Phase Error")
@@ -59,17 +63,18 @@ plt.scatter(wlistL,phAL14,s=50)
 plt.scatter(wlistL,phAL16,s=50)
 plt.scatter(wlistL,phAL18,s=50)
 plt.scatter(wlistL,phAL20,s=50)
-plt.scatter(wlistL,phAL22,s=40)
+#plt.scatter(wlistL,phAL22,s=40)
 plt.xlabel("Ramp Time")
 plt.ylabel("Phase Error")
 plt.savefig(directoryF+file+"_phA"+".svg")
 plt.show()
 
-phAl=[phAL10,phAL12,phAL14,phAL16,phAL18,phAL20,phAL22]
+#phAl=[phAL10,phAL12,phAL14,phAL16,phAL18,phAL20,phAL22]
+phAl=[phAL10,phAL12,phAL14,phAL16,phAL18,phAL20]
 
 phAvL=[]
 Llist=[]
-for i in range(0,7):
+for i in range(0,len(phAl)):
     phAvL.append(phAl[i][99])
     Llist.append(10+2*i)
     
