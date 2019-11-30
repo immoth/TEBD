@@ -23,7 +23,8 @@ alphaL=alpha
 directory="C:\\Users\\jsten\\Documents\\Reaserch\\Interaction Error\\TEBD_clean\\data_std\\"
 directoryF="C:\\Users\\jsten\\Documents\\Reaserch\\Interaction Error\\TEBD_clean\\figures_std\\"
 
-file="_m"+str(muL)+"_J"+str(tuaL)+"_D"+str(DeltaL)+"_V"+str(VmaxL)+"_L"+str(LL)+"_tr"+str(NtL)+"_tw"+str('F')+"_dt"+str(dtL)+"_BD"+str(BD)+"_N"+str(n2-n1)+"_alpha"+str(alphaL)
+file="_m"+str(muL)+"_J"+str(tuaL)+"_D"+str(DeltaL)+"_V"+str(VmaxL)+"_L"+str(LL)+"_tr"+str(NtL)+"_tw"+str('F')+"_dt"+str(dtL)+"_BD"+str(BD)+"_NR"+str(n2-n1)+"_alpha"+str(alphaL)
+#file="_m"+str(muL)+"_J"+str(tuaL)+"_D"+str(DeltaL)+"_V"+str(VmaxL)+"_L"+str(LL)+"_tr"+str(NtL)+"_tw"+str('F')+"_dt"+str(dtL)+"_BD"+str(BD)+"_N"+str(n2-n1)+"_alpha"+str(alphaL)
 
 with open(directory+file+"_phA"+".txt","rb") as f:
     phAL=pickle.load(f)

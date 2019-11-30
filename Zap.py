@@ -115,6 +115,29 @@ def zapN(n1,n2,L):
     
     return ztp
 
+
+def zapR(n1,n2,L):
+
+    ztp=[np.array([Z2,I2])]
+    
+    for l in range(1,n1):
+        ztp.append(np.array([[Z2,Z2],[Z2,I2]]))
+        
+    ztp.append(np.array([[Z2,Z2],[Z2,I2+sx]]))
+    
+    for l in range(n1+1,n2):
+        ztp.append(np.array([[Z2,Z2],[Z2,I2+sx]]))
+        
+    ztp.append(np.array([[Z2,Z2],[Z2,I2+sx]]))
+        
+    for l in range(n2+1,L-1):
+        ztp.append(np.array([[Z2,Z2],[Z2,I2]]))
+        
+    ztp.append(np.array([Z2,I2]))
+    
+    return ztp
+
+
 def zapNc(n1,n2,L):
 
     ztp=[np.array([Z2,I2])]

@@ -34,7 +34,8 @@ dd=2
 "Zap opperator"
 n1=int(L/2-1)
 n2=int(L/2)
-oz=Zap.zapN(n1,n2,L)
+oz=Zap.zapR(n1,n2,L)
+#oz=Zap.zapN(n1,n2,L)
 
 y=DMRG.DMRG(L,DD,dd,0)
 

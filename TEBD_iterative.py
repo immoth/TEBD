@@ -9,6 +9,7 @@ import numpy as np
 import copy
 
 import Matrix_Element as ME
+import MPS
 import MPO
 import U_MPO
 import Zap
@@ -93,6 +94,9 @@ print("ramped up")
 ypt=ME.apply_O(oz,ypt)
 ymt=ME.apply_O(oz,ymt)
 
+ypt=MPS.nMPS(ypt)
+ymt=MPS.nMPS(ymt)
+
 yphold=copy.deepcopy(ypt)
 ymhold=copy.deepcopy(ymt)
 
@@ -170,7 +174,8 @@ for wait in range(0,3000,30):
     EendP.append(EendPw)
     EendM.append(EendMw)
     
-    filename=str(mu)+"_J"+str(tua)+"_D"+str(Delta)+"_V"+str(Vmax)+"_L"+str(L)+"_tr"+str(Nt)+"_tw"+str('F')+"_dt"+str(dt)+"_BD"+str(BD)+"_N"+str(n2-n1)+"_alpha"+str(alpha)
+    filename=str(mu)+"_J"+str(tua)+"_D"+str(Delta)+"_V"+str(Vmax)+"_L"+str(L)+"_tr"+str(Nt)+"_tw"+str('F')+"_dt"+str(dt)+"_BD"+str(BD)+"_NR"+str(n2-n1)+"_alpha"+str(alpha)
+    #filename=str(mu)+"_J"+str(tua)+"_D"+str(Delta)+"_V"+str(Vmax)+"_L"+str(L)+"_tr"+str(Nt)+"_tw"+str('F')+"_dt"+str(dt)+"_BD"+str(BD)+"_N"+str(n2-n1)+"_alpha"+str(alpha)
     
     with open(r"C:\Users\jsten\Documents\Reaserch\Interaction Error\TEBD_clean\data_std\_m"+filename+"_phA"+".txt","wb") as f:
         pickle.dump(phA,f)
